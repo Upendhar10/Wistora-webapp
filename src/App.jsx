@@ -1,11 +1,14 @@
 import Header from "./components/Header.jsx";
-import Body from "./components/Body.jsx";
 import Footer from "./components/Footer.jsx";
+
+import { RouterProvider } from "react-router-dom";
+import MainContainerRouter from "./pages/routes";
+
 const App = () => {
   return (
     <div>
       <Header />
-      <Body />
+      <RouterProvider router={MainContainerRouter} />
       <Footer />
     </div>
   );
