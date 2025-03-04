@@ -5,7 +5,7 @@ const VideoCard = ({ video }) => {
   const { title, channelTitle, thumbnails, publishedAt } = snippet;
 
   return (
-    <div className="border-1 h-[260px] min-w-[220px] cursor-pointer rounded-md border">
+    <div className="border-1 h-[260px] min-w-[220px] cursor-pointer rounded-md border italic">
       <img
         src={thumbnails?.medium?.url}
         alt={title}
@@ -17,8 +17,14 @@ const VideoCard = ({ video }) => {
           {channelTitle}
         </h3>
         <div className="flex gap-2 p-1 text-xs opacity-75">
-          <span>{parseInt(statistics?.viewCount)?.toLocaleString()} Views</span>
-          <span>|</span>
+          {statistics?.viewCount ? (
+            <>
+              <span>
+                {parseInt(statistics?.viewCount)?.toLocaleString()} Views
+              </span>
+              <span>|</span>
+            </>
+          ) : null}
           <span>{formatDistanceToNow(new Date(publishedAt))} ago</span>
         </div>
       </div>
