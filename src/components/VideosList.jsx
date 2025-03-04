@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import VideoCard from "./VideoCard";
 import { YT_VIDEOS_API, YT_LIVE_API } from "../utils/constants";
 import { Link } from "react-router-dom";
+import { current } from "@reduxjs/toolkit";
 
 const CATEGORY_IDS = {
   trending: "",
@@ -12,7 +13,7 @@ const CATEGORY_IDS = {
 
 const VideosList = ({ category }) => {
   const [videos, setVideos] = useState([]);
-
+  const currCategory = category;
   useEffect(() => {
     const fetchVideos = async () => {
       let API_URL = "";
@@ -45,10 +46,10 @@ const VideosList = ({ category }) => {
     <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-3 p-2">
       {videos.map((video) => (
         <Link
-          to={`/watch?v=${video.id?.videoId || video.id}`}
+          to={`/watch?v=${video.id?.videoId || video.id}&category=${currCategory}`}
           key={video.id?.videoId || video.id}
         >
-          <VideoCard video={video} />
+          <VideoCard video={video} category={currCategory} />
         </Link>
       ))}
     </div>
