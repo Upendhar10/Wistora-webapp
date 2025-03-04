@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Body from "../components/Body";
 import Home from "../pages/Home";
 import VideosList from "../components/VideosList";
+import Watch from "../pages/Watch";
 
 const MainContainerRouter = createBrowserRouter([
   {
@@ -11,6 +12,7 @@ const MainContainerRouter = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "about", element: <h1>About</h1> },
+      { path: "watch", element: <Watch /> },
       { path: "trending", element: <VideosList category={"trending"} /> },
       { path: "live", element: <VideosList category={"live"} /> },
       { path: "music", element: <VideosList category={"music"} /> },

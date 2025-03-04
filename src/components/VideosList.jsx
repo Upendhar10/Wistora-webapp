@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import VideoCard from "./VideoCard";
 import { YT_VIDEOS_API, YT_LIVE_API } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 const CATEGORY_IDS = {
   trending: "",
@@ -31,7 +32,6 @@ const VideosList = ({ category }) => {
           throw new Error("Something went wrong");
         }
         const data = await response.json();
-        console.log(data);
         setVideos(data.items || []);
       } catch (error) {
         console.error("Unable to Fetch Data", error);
@@ -44,7 +44,12 @@ const VideosList = ({ category }) => {
   return (
     <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-3 p-2">
       {videos.map((video) => (
-        <VideoCard key={video.id?.videoId || video.id} video={video} />
+        <Link
+          to={`/watch?v=${video.id?.videoId || video.id}`}
+          key={video.id?.videoId || video.id}
+        >
+          <VideoCard video={video} />
+        </Link>
       ))}
     </div>
   );
