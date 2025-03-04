@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import VideoDetails from "../components/VideoDetails";
 import LiveChat from "../components/LiveChat";
-import CommentsCont from "../components/CommentsCont";
+// import CommentsCont from "../components/CommentsCont";
 
 function Watch() {
   const [searchParams] = useSearchParams();
@@ -20,8 +20,8 @@ function Watch() {
         ></iframe>
         <VideoDetails videoId={videoId} />
       </div>
-      {/* <LiveChat /> */}
-      <CommentsCont />
+      <LiveChat />
+      {/* <CommentsCont /> */}
     </div>
   );
 }

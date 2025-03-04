@@ -19,7 +19,7 @@ const VideoDetails = ({ videoId }) => {
 
         const vData = data.items[0];
 
-        console.log(vData);
+        // console.log(vData);
 
         if (!vData) return;
         setVideoData(data.items[0]);
