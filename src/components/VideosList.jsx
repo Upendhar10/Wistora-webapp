@@ -1,8 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import VideoCard from "./VideoCard";
 import { YT_VIDEOS_API, YT_LIVE_API } from "../utils/constants";
 import { Link } from "react-router-dom";
-import { current } from "@reduxjs/toolkit";
 
 const CATEGORY_IDS = {
   trending: "",

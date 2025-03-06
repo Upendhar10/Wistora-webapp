@@ -22,7 +22,7 @@ const Label = ({ icon, name, title }) => {
 
 const SideMenubar = () => {
   return (
-    <div className="border-1 m-1 grid h-full w-1/6 place-content-center gap-2 rounded-md border">
+    <div className="border-1 m-1 grid h-full w-1/6 place-content-center gap-2 rounded-md border py-4">
       <Link to="/">
         <Label icon={<IoHomeSharp />} name="Home" title="Home" />{" "}
       </Link>

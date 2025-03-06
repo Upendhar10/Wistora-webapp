@@ -51,7 +51,7 @@ const VideoDetails = ({ videoId }) => {
   return (
     <>
       <h2 className="p-2 text-xl font-semibold">{snippet?.title}</h2>
-      <div className="border-1 flex flex-wrap items-center justify-center gap-3 rounded-md border p-2 md:justify-between">
+      <div className="border-1 flex flex-wrap items-center justify-between gap-3 rounded-md border p-2">
         <div className="flex items-center gap-3 px-2 py-1">
           <FaUserCircle className="cursor-pointer text-3xl" />
           <h2 className="text-lg font-semibold">{snippet?.channelTitle}</h2>

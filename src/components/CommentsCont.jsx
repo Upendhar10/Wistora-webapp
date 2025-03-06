@@ -29,7 +29,8 @@ const CommentsList = ({ CommentsData }) => {
 
 const CommentsCont = () => {
   return (
-    <div className="mb-2 h-full w-1/3 gap-2 rounded-sm border p-2">
+    <div className="mb-2 h-full w-full gap-2 rounded-sm border p-2 md:w-1/3">
+      <h2 className="font-bold">Comments : </h2>
       <CommentsList CommentsData={CommentsMock} />
     </div>
   );

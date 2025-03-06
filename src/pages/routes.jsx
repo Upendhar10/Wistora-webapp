@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import VideosList from "../components/VideosList";
 import Watch from "../pages/Watch";
 import About from "./About";
+import SearchResult from "../components/SearchResult";
 
 const MainContainerRouter = createBrowserRouter([
   {
@@ -14,6 +15,7 @@ const MainContainerRouter = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "about", element: <About /> },
       { path: "watch", element: <Watch /> },
+      { path: "searchResult", element: <SearchResult /> },
       { path: "trending", element: <VideosList category={"trending"} /> },
       { path: "live", element: <VideosList category={"live"} /> },
       { path: "music", element: <VideosList category={"music"} /> },
