@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import VideoCard from "./VideoCard";
 import { YT_VIDEOS_API, YT_LIVE_API } from "../utils/constants";
 import { Link } from "react-router-dom";
+import { ShimmerList } from "./Shimmer";
 
 const CATEGORY_IDS = {
   trending: "",
@@ -41,7 +42,9 @@ const VideosList = ({ category }) => {
     fetchVideos();
   }, [category]);
 
-  return (
+  return videos.length === 0 ? (
+    <ShimmerList />
+  ) : (
     <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-3 p-2">
       {videos.map((video) => (
         <Link

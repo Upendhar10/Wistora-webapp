@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { cacheSearchResults } from "../reduxStore/SearchSlice";
 import { Link } from "react-router-dom";
 
+import { ShimmerList } from "./Shimmer";
+
 const SearchFeature = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState([]);

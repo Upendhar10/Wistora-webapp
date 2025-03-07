@@ -1,7 +1,7 @@
 import { FaUserCircle } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
-import { GOOGLE_API_KEY } from "../utils/constants";
+import { channelResLink, VideResLink } from "../utils/constants";
 const VideoDetails = ({ videoId }) => {
   const [videoData, setVideoData] = useState({});
   const [channelData, setChannelData] = useState({});
@@ -9,9 +9,7 @@ const VideoDetails = ({ videoId }) => {
   useEffect(() => {
     const fetchVideoData = async () => {
       try {
-        const videoRes = await fetch(
-          `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoId}&key=${GOOGLE_API_KEY}`,
-        );
+        const videoRes = await fetch(VideResLink + videoId);
         if (!videoRes.ok) {
           throw new Error("Something went wrong", videoRes.statusText);
         }
@@ -27,7 +25,7 @@ const VideoDetails = ({ videoId }) => {
         // Fetch Channel Data
 
         const channelRes = await fetch(
-          `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${vData.snippet.channelId}&key=${GOOGLE_API_KEY}`,
+          channelResLink + `${vData.snippet.channelId}`,
         );
         if (!channelRes.ok) {
           throw new Error("Something went wrong", channelRes.statusText);
