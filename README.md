@@ -32,13 +32,13 @@ Follow these steps to run the project locally:
    git clone https://github.com/your-username/wistora.git
    cd wistora
    ```
-2. Install dependencies
+2. **Install dependencies**
 
    ```sh
    npm install
    ```
 
-3. Set up environment variables
+3. **Set up environment variables**
 
    - Create a .env file in the root directory.
    - Add your Google API Key to access YouTube Public API:
@@ -47,11 +47,11 @@ Follow these steps to run the project locally:
    VITE_GOOGLE_API_KEY=your_api_key_here
    ```
 
-4. Start the development server
+4. **Start the development server**
    ```sh
    npm run dev
    ```
-5. Open the app
+5. **Open the app**
    - The app will be available at http://localhost:5173/ by default.
 
 ## 📜 License
