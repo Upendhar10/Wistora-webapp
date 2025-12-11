@@ -20,6 +20,7 @@ const VideosList = ({ category }) => {
 
       if (category === "live") {
         API_URL = YT_LIVE_API;
+        console.log(API_URL);
       } else {
         const CATEGORY_ID = CATEGORY_IDS[category]
           ? `&videoCategoryId=${CATEGORY_IDS[category]}`
@@ -33,6 +34,8 @@ const VideosList = ({ category }) => {
           throw new Error("Something went wrong");
         }
         const data = await response.json();
+        console.log(data);
+        
         setVideos(data.items || []);
       } catch (error) {
         console.error("Unable to Fetch Data", error);
@@ -45,7 +48,7 @@ const VideosList = ({ category }) => {
   return videos.length === 0 ? (
     <ShimmerList />
   ) : (
-    <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-3 p-2">
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-3 p-2 overflow-y-scroll [scrollbar-width:none] [-ms-overflow-style:none] hide-scrollbar">
       {videos.map((video) => (
         <Link
           to={`/watch?v=${video.id?.videoId || video.id}&category=${currCategory}`}

@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <div className="border-t bg-gray-800 p-1 text-center text-xs italic text-white">
+    <div className=" bg-gray-800 p-1 text-center text-xs italic text-white hidden">
       <p>
         Designed & Developed by{" "}
         <a
@@ -8,7 +8,7 @@ function Footer() {
           className="hover:text-purple-500"
           target="_blank"
         >
-          Upendhar N
+          Upendhar NM
         </a>{" "}
       </p>
     </div>

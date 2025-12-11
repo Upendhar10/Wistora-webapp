@@ -6,7 +6,7 @@ import MainContainerRouter from "./pages/routes";
 
 const App = () => {
   return (
-    <div>
+    <div className="max-h-screen h-full">
       <Header />
       <RouterProvider router={MainContainerRouter} />
       <Footer />

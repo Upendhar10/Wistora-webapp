@@ -30,7 +30,7 @@ const SearchResult = () => {
   }, [SearchQuery]);
 
   return (
-    <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-3 p-2">
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-3 p-2 overflow-y-scroll [scrollbar-width:none] [-ms-overflow-style:none] hide-scrollbar">
       {videos.map((video) => (
         <Link
           to={`/watch?v=${video.id?.videoId || video.id}`}

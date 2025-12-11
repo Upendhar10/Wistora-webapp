@@ -5,7 +5,7 @@ const VideoCard = ({ video }) => {
   const { title, channelTitle, thumbnails, publishedAt } = snippet;
 
   return (
-    <div className="border-1 h-[260px] min-w-[220px] cursor-pointer rounded-md border italic">
+    <div className="border-1 h-[260px] min-w-[250px] cursor-pointer rounded-md border italic">
       <img
         src={thumbnails?.medium?.url}
         alt={title}

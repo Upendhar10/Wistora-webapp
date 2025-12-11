@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 function Body() {
   const isOpen = useSelector((store) => store.sideMenu.isOpen);
   return (
-    <div className="flex">
+    <div className="flex min-h-full">
       {isOpen && <SideMenubar />}
       <MainContainer />
     </div>

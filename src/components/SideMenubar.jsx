@@ -6,23 +6,22 @@ import { FaTowerCell } from "react-icons/fa6";
 import { MdOutlineSportsHandball } from "react-icons/md";
 
 import { IoGameController } from "react-icons/io5";
-
 import { Link } from "react-router-dom";
 
 const Label = ({ icon, name, title }) => {
   return (
-    <div className="flex cursor-pointer items-center gap-5 p-1 italic hover:text-purple-500">
-      <span title={title} className="text-2xl">
+    <div className="flex flex-col cursor-pointer items-center gap-1 p-1 italic hover:text-purple-500">
+      <span title={title} className="text-xl">
         {icon}
       </span>
-      <p className="hidden text-xl font-semibold md:block">{name}</p>
+      <p className="hidden text-[.65rem] font-semibold md:block">{name}</p>
     </div>
   );
 };
 
 const SideMenubar = () => {
   return (
-    <div className="border-1 m-1 grid h-full w-1/6 place-content-center gap-2 rounded-md border py-4">
+    <div className="border-1 border-purple-500 m-2 flex flex-col gap-5">
       <Link to="/">
         <Label icon={<IoHomeSharp />} name="Home" title="Home" />{" "}
       </Link>

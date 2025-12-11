@@ -1,6 +1,6 @@
 import { IoSearch } from "react-icons/io5";
 import { useEffect, useState } from "react";
-import { YT_SEARCH_API } from "../utils/constants";
+import { YT_SEARCH_VIDEO_API } from "../utils/constants";
 
 import { useDispatch, useSelector } from "react-redux";
 import { cacheSearchResults } from "../reduxStore/SearchSlice";
@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { ShimmerList } from "./Shimmer";
 
 const SearchFeature = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(" ");
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
@@ -19,7 +19,7 @@ const SearchFeature = () => {
   useEffect(() => {
     const fetchSearchSuggestions = async () => {
       try {
-        const response = await fetch(YT_SEARCH_API + searchQuery);
+        const response = await fetch(YT_SEARCH_VIDEO_API + searchQuery);
         if (!response.ok) {
           throw new Error("search error!");
         }
@@ -52,11 +52,11 @@ const SearchFeature = () => {
   };
 
   return (
-    <div className="relative m-auto my-2 flex w-4/5 items-center justify-between gap-2 rounded-full border p-1 px-3 shadow-sm md:w-3/5">
+    <div className="m-auto my-2 flex w-4/5 items-center justify-between gap-2 rounded-sm border p-1 px-3 shadow-sm md:w-2/5">
       <input
         type="text"
         placeholder="Search for your favorite videos . . . . . ."
-        className="w-full border-r-2 px-2 py-1 outline-none"
+        className="w-full border-r-2 px-2 py-1 outline-none bg-black text-white"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         onFocus={() => setShowSuggestions(true)}
@@ -66,7 +66,7 @@ const SearchFeature = () => {
         <IoSearch className="cursor-pointer text-2xl" />
       </Link>
       {showSuggestions && (
-        <div className="absolute left-3 top-11 z-10 m-auto w-[90%] bg-white p-1">
+        <div className="absolute left-3 top-11 z-10 m-auto w-[90%] bg-black p-1">
           {searchSuggestions.length > 0 &&
             searchSuggestions.map((s) => {
               return (
