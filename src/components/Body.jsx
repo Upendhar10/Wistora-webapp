@@ -1,12 +1,13 @@
 import SideMenubar from "./SideMenubar";
 import MainContainer from "./MainContainer";
 
+
 import { useSelector } from "react-redux";
 
 function Body() {
   const isOpen = useSelector((store) => store.sideMenu.isOpen);
   return (
-    <div className="flex min-h-full">
+    <div className="flex h-full overflow-hidden">
       {isOpen && <SideMenubar />}
       <MainContainer />
     </div>

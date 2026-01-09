@@ -6,9 +6,11 @@ import MainContainerRouter from "./pages/routes";
 
 const App = () => {
   return (
-    <div className="max-h-screen h-full">
+    <div className="h-screen flex flex-col overflow-hidden">
       <Header />
-      <RouterProvider router={MainContainerRouter} />
+      <div className="flex-1 overflow-hidden">
+        <RouterProvider router={MainContainerRouter} />
+      </div>
       <Footer />
     </div>
   );

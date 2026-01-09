@@ -7,7 +7,7 @@ const Logo = () => {
   return (
     <div>
       <a href="/">
-        <h1 className="text-3xl font-bold italic text-purple-500">Wistora.</h1>
+        <h1 className="text-3xl font-bold italic text-purple-500 text-center">Wistora.</h1>
       </a>
     </div>
   );
@@ -30,9 +30,11 @@ const Header = () => {
       <div className="flex items-center gap-5">
         <FaUserCircle className="cursor-pointer text-2xl" />
       </div>
-      
     </div>
   );
 };
 
 export default Header;
+
+
+
