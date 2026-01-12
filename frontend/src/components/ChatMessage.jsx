@@ -1,7 +1,7 @@
 import { FaUserCircle } from "react-icons/fa";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addMessage } from "../reduxStore/LiveChatSlice";
+import { addMessage } from "../redux/slices/LiveChatSlice.js";
 export const CustomChatMessage = () => {
   const [myMessage, setMyMessage] = useState();
 
@@ -20,7 +20,7 @@ export const CustomChatMessage = () => {
       <input
         type="text"
         placeholder="say something......"
-        className="p-2 outline-none"
+        className="p-2 outline-none text-black"
         value={myMessage}
         onChange={(e) => setMyMessage(e.target.value)}
       />

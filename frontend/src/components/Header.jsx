@@ -1,7 +1,7 @@
 import { HiMenuAlt3 } from "react-icons/hi";
 import { FaUserCircle } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { toggleSideMenu } from "../reduxStore/SideMenuSlice";
+import { toggleSideMenu } from "../redux/slices/SideMenuSlice.js";
 
 const Logo = () => {
   return (

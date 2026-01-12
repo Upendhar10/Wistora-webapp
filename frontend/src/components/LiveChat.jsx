@@ -1,6 +1,6 @@
 import ChatMessage, { CustomChatMessage } from "./ChatMessage";
 import { generateRandomMessage } from "../utils/helpers";
-import { addMessage, clearMessages } from "../reduxStore/LiveChatSlice";
+import { addMessage, clearMessages } from "../redux/slices/LiveChatSlice.js";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 
