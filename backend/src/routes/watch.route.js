@@ -1,8 +1,8 @@
 import express from "express";
-import { getVideoById } from "../controllers/watch.controller.js";
+import { getVideoDataById } from "../controllers/watch.controller.js";
 
 const router = express.Router();
 
-router.get("/", getVideoById);
+router.get("/", getVideoDataById);
 
 export default router;
