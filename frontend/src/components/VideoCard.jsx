@@ -33,26 +33,3 @@ const VideoCard = ({ video }) => {
 };
 
 export default VideoCard;
-
-/*
-const VideoCard = () => {
-  return (
-    <div className="h-[250px] min-w-[220px] rounded-md bg-red-500">
-      <img src="" alt="thumbnail" className="h-3/5 rounded-t-md bg-green-500" />
-      <div className="p-2">
-        <h2 className="p-1 font-bold">title</h2>
-        <h3 className="font-semibold">Channel Name</h3>
-        <div className="flex gap-2">
-          <span>100000 Views</span>
-          <span>|</span>
-          <span>2hr ago</span>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default VideoCard;
-
-
-*/

@@ -1,60 +1,32 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchVideos } from "../redux/thunks/videosThunk.js";
 import VideoCard from "./VideoCard";
-import { YT_VIDEOS_API, YT_LIVE_API } from "../utils/constants";
 import { Link } from "react-router-dom";
 import { ShimmerList } from "./Shimmer";
 
-const CATEGORY_IDS = {
-  trending: "",
-  music: "10",
-  gaming: "20",
-  sports: "17",
-};
-
 const VideosList = ({ category }) => {
-  const [videos, setVideos] = useState([]);
-  const currCategory = category;
+  
+  const dispatch = useDispatch();
+  const { data: videos, loading, error } = useSelector(
+    (store) => store.videos
+  );
+
   useEffect(() => {
-    const fetchVideos = async () => {
-      let API_URL = "";
+    dispatch(fetchVideos(category));
+  }, [category, dispatch]);
 
-      if (category === "live") {
-        API_URL = YT_LIVE_API;
-        console.log(API_URL);
-      } else {
-        const CATEGORY_ID = CATEGORY_IDS[category]
-          ? `&videoCategoryId=${CATEGORY_IDS[category]}`
-          : "";
-        API_URL = YT_VIDEOS_API + CATEGORY_ID;
-      }
+  if (loading) return <ShimmerList />;
+  if (error) return <p className="text-red-500">{error}</p>;
 
-      try {
-        const response = await fetch(API_URL);
-        if (!response.ok) {
-          throw new Error("Something went wrong");
-        }
-        const data = await response.json();
-        console.log(data);
-        
-        setVideos(data.items || []);
-      } catch (error) {
-        console.error("Unable to Fetch Data", error);
-      }
-    };
-
-    fetchVideos();
-  }, [category]);
-
-  return videos.length === 0 ? (
-    <ShimmerList />
-  ) : (
-    <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-3 p-2 hide-scrollbar">
+  return (
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-3 p-2 overflow-y-scroll hide-scrollbar">
       {videos.map((video) => (
         <Link
-          to={`/watch?v=${video.id?.videoId || video.id}&category=${currCategory}`}
+          to={`/watch?v=${video.id?.videoId || video.id}&category=${category}`}
           key={video.id?.videoId || video.id}
         >
-          <VideoCard video={video} category={currCategory} />
+          <VideoCard video={video} category={category} />
         </Link>
       ))}
     </div>

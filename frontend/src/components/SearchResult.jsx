@@ -1,40 +1,33 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
+import { searchVideos } from "../redux/thunks/searchThunk.js";
 import VideoCard from "./VideoCard";
-import { YT_SEARCH_VIDEO_API } from "../utils/constants";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { ShimmerList } from "./Shimmer";
 
 const SearchResult = () => {
-  const [videos, setVideos] = useState([]);
-
   const [searchParams] = useSearchParams();
+  const query = searchParams.get("q");
 
-  const SearchQuery = searchParams.get("q");
+  const dispatch = useDispatch();
+  const { data, loading, error } = useSelector((store) => store.search);
 
   useEffect(() => {
-    const fetchVideos = async () => {
-      try {
-        const response = await fetch(YT_SEARCH_VIDEO_API + SearchQuery);
-        if (!response.ok) {
-          throw new Error("Something went wrong");
-        }
-        const data = await response.json();
-        console.log(data);
+    if (query) {
+      dispatch(searchVideos(query));
+    }
+  }, [query, dispatch]);
 
-        setVideos(data.items || []);
-      } catch (error) {
-        console.error("Unable to Fetch Data", error);
-      }
-    };
-
-    fetchVideos();
-  }, [SearchQuery]);
+  if (loading) return <ShimmerList />;
+  if (error) return <p className="text-red-500">{error}</p>;
 
   return (
-    <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-3 p-2 overflow-y-scroll [scrollbar-width:none] [-ms-overflow-style:none] hide-scrollbar">
-      {videos.map((video) => (
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] [scrollbar-width:none] gap-3 p-2">
+      {data.map((video) => (
         <Link
-          to={`/watch?v=${video.id?.videoId || video.id}`}
-          key={video.id?.videoId || video.id}
+          to={`/watch?v=${video.id.videoId}`}
+          key={video.id.videoId}
         >
           <VideoCard video={video} />
         </Link>
