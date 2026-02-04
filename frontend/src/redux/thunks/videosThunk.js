@@ -1,6 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit"
 
-const BACKEND_BASE_URL  = process.env.VITE_BACKEND_URL;
+const BACKEND_BASE_URL  = import.meta.env.VITE_BACKEND_URL;;
 
 // Async thunk
 export const fetchVideos = createAsyncThunk(
