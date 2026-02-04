@@ -1,4 +1,4 @@
-import HeroSection from "../components/HomeSection.jsx";
+import HeroSection from "../components/HeroSection.jsx";
 import TrendingPreview from "../components/TrendingPreview.jsx";
 import FooterNote from "../components/FooterNote.jsx";
 
