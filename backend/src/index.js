@@ -15,7 +15,7 @@ const app = express();
 // middlewares
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://wistora-webapp.vercel.app/"
+  "https://wistora-webapp.vercel.app"
 ]
 app.use(cors({
   origin: (origin, callback) => {
