@@ -1,64 +1,122 @@
-# Wistora - The YT inspired VSP
+# 🎬 Wistora – Video Streaming Platform
 
-## 📝 Project Description
+Wistora is a frontend-focused video streaming platform built to explore **real-world React architecture**, state management, and secure API integration.
 
-- Wistora is a YouTube Inspired video streaming platform where I have mirrored some of the cool features of the YouTube app.
-- It allows users to explore trending videos, search for content, and watch videos with an interactive live chat feature.
+This project emphasizes **clean UI, predictable state flow, and separation of concerns**.
 
-## 🚀 Features
+🔗 **Live Demo:** `<repo link>`
 
-- 🎥 **Video Listing** - Displays videos categorized into Trending, Music, Live, Gaming, and Sports.
-- 🔎 **Search Functionality** - Provides YouTube-like search suggestions.
-- 💬 **Live Chat** - Dynamic chat functionality for live videos.
-- 📝 **Comments Section** - Static comments for other categories.
-- 📱 **Responsive Design** - Fully optimized UI for all screen sizes.
+📦 **Github Repo:** `<repo link>`
 
-## 🛠 Tech Stack
+<!-- 📦 **Frontend Repo:**  -->
+<!-- 📦 **BFF Repo:** `<repo link if separate>` -->
 
-- **React** - Core UI development library
-- **Redux** - State management
-- **TailwindCSS** - Styling
-- **JavaScript** - Programming language
-- **YouTube API** - Data fetching
-- **Vite** - Bundler
-- **npm** - Package manager
+---
 
-## ⚙️ Installation & Setup
+## Why this project exists
 
-Follow these steps to run the project locally:
+Most beginner projects directly call third-party APIs from the frontend, exposing sensitive keys and limiting flexibility.
 
-1. **Clone the repository**
-   ```sh
-   git clone https://github.com/your-username/wistora.git
-   cd wistora
-   ```
-2. **Install dependencies**
+Wistora was built to:
 
-   ```sh
-   npm install
-   ```
+* Practice building **API-driven frontend applications**
+* Understand and apply the **Backend-for-Frontend (BFF)** pattern
+* Manage complex UI state using **Redux Toolkit**
+* Design user-centric features found in real streaming platforms
 
-3. **Set up environment variables**
+---
 
-   - Create a .env file in the root directory.
-   - Add your Google API Key to access YouTube Public API:
+## Features
 
-   ```sh
-   VITE_GOOGLE_API_KEY=your_api_key_here
-   ```
+* Browse videos by category (Trending, Music, etc.)
+* Search videos dynamically
+* Watch page with video details
+* Simulated live chat
+* Video-level static comments
+* Responsive layout for different screen sizes
 
-4. **Start the development server**
-   ```sh
-   npm run dev
-   ```
-5. **Open the app**
-   - The app will be available at http://localhost:5173/ by default.
+---
 
-## 📜 License
+## Architecture & Design Decisions
 
-This project is licensed under the MIT License.
+### High-Level Architecture
 
-## 📝 Credits
+```
+React Frontend → BFF (Node + Express) → YouTube Data API
+```
 
-- [Upendhar N](https://www.linkedin.com/in/upendharnemmani/)
-- [YouTube API](https://developers.google.com/youtube/v3/getting-started)
+```
+wistora/
+ ├── backend/
+ │    ├── src/
+ │    └── package.json
+ ├── frontend/
+ │    ├── src/
+ │    └── package.json
+ └── README.md
+```
+
+### Key Decisions
+
+* **Backend-for-Frontend (BFF):**
+
+  * Prevents exposing YouTube API keys on the client
+  * Acts as a proxy to control and sanitize API responses
+  * Makes it easier to add caching or rate limiting later
+
+* **Redux Toolkit:**
+
+  * Centralized state for video data and UI interactions
+  * Ensures predictable data flow across pages
+
+* **Component-based UI:**
+
+  * Reusable components for video cards, layouts, and navigation
+
+---
+
+## Tech Stack
+
+* **Frontend:** React, JavaScript, Tailwind CSS, Redux Toolkit
+* **Backend:** Node.js, Express
+* **API:** YouTube Data API
+
+---
+
+## Getting Started (Local Setup)
+
+```bash
+# Clone repository
+git clone https://github.com/Upendhar10/Wistora-webapp
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+### Note: 
+   - You need a Google API Key to run this project in your local machine.
+   - API keys are managed securely on the server side using environment variables.
+
+---
+
+## Current Limitations
+
+* Live chat is simulated and not real-time
+* Comments under every video are static
+* No user authentication yet
+
+---
+
+## Future Improvements
+
+* Add WebSocket-based real-time chat
+* Implement user authentication
+* Introduce caching and rate limiting at the BFF layer
+* Improve accessibility and keyboard navigation
+
+---
+
+<!-- ## Screenshots -->
