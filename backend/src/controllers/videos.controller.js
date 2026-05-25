@@ -2,6 +2,8 @@ import axios from "axios";
 import { API_URL } from "../utils/constants.js";
 
 export const getVideos = async (req, res) => {
+  console.log('VIDEOS ROUTE HIT');
+  
   try {
     const { category } = req.query;
 
@@ -17,7 +19,14 @@ export const getVideos = async (req, res) => {
       : "";
 
     const url = `${API_URL}&key=${process.env.YOUTUBE_API_KEY}${categoryParam}`
-    const response = await axios.get(url);
+    console.log('URL:', url);
+
+    console.log('Calling Youtube');
+    
+    const response = await axios.get(url, {timeout: 10000});
+
+    console.log('Youtube success');
+    
 
     // console.log(response);
 
