@@ -1,46 +1,4 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
 import serverless from "serverless-http";
-
-dotenv.config();
-
-// routes
-import videosRoute from "../src/routes/videos.route.js";
-import SearchRoute from "../src/routes/search.route.js";
-import LiveVideosRoute from "../src/routes/live.route.js";
-import WatchPageRoute from "../src/routes/watch.route.js";
-
-const app = express();
-
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://wistora-webapp.vercel.app"
-];
-
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true
-  })
-);
-
-app.use(express.json());
-
-// endpoints
-app.use("/api/videos", videosRoute);
-app.use("/api/search", SearchRoute);
-app.use("/api/live", LiveVideosRoute);
-app.use("/api/watch", WatchPageRoute);
-
-app.get("/", (req, res) => {
-  res.send("BFF is running 🚀");
-});
+import app from "../src/app.js";
 
 export default serverless(app);
