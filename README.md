@@ -210,6 +210,7 @@ npm run dev
 
 * You need a **Google API Key** to run this project locally
 * API keys are securely handled via environment variables in the backend
+* The backend is hosted on a free tier (Render), so the server may take a few seconds to respond on the first request due to cold starts.
 
 ---
 
