@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "A BFF for wistora (frontend) app",
   "type": "module",
-  "main": "index.js",
   "scripts": {
     "dev": "nodemon src/app.js",
+    "vercel:dev": "vercel dev",
     "test": "echo \"Error: no test specified\" && exit 1" 
   },
   "author": "Upendhar NM",
