@@ -3,6 +3,7 @@ import { generateRandomMessage } from "../utils/helpers";
 import { addMessage, clearMessages } from "../redux/slices/LiveChatSlice.js";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
+import Loader from "../utils/Loader.jsx";
 
 const LiveChat = () => {
   let ChatMsgs = useSelector((store) => store.liveChat.messages);
@@ -12,7 +13,7 @@ const LiveChat = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       let ChatObj = generateRandomMessage();
-      console.log("API call");
+      // console.log("API call");
       dispatch(
         addMessage({
           name: ChatObj.username,
@@ -29,14 +30,14 @@ const LiveChat = () => {
   }, [dispatch]);
 
   return (
-    <div className="w-full md:w-1/3">
+    <div className="w-full md:w-1/3 f-full">
       <div className="border-1 mb-2 flex h-[420px] flex-col-reverse gap-2 overflow-y-scroll rounded-sm border">
         {ChatMsgs.length > 0 ? (
           ChatMsgs.map((chat, index) => (
             <ChatMessage key={index} name={chat.name} message={chat.message} />
           ))
         ) : (
-          <p>Loading...</p>
+          <div className="flex items-center justify-center h-full"><Loader/></div>
         )}
       </div>
       <CustomChatMessage />
