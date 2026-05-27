@@ -15,16 +15,16 @@ export const CustomChatMessage = () => {
   return (
     <form
       onSubmit={(e) => handleSendMessage(e)}
-      className="gap border-1 flex h-fit items-center justify-between rounded-md border"
+      className="border-1 flex h-fit items-center w-full rounded-md border"
     >
       <input
         type="text"
         placeholder="say something......"
-        className="p-2 outline-none text-black"
+        className="p-2 outline-none text-black w-full"
         value={myMessage}
         onChange={(e) => setMyMessage(e.target.value)}
       />
-      <button className="cursor-pointer rounded-sm bg-purple-500 p-2 text-white">
+      <button className="cursor-pointer rounded-sm bg-purple-500 p-2 px-10 text-white font-bold">
         Send
       </button>
     </form>

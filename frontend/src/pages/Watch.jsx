@@ -6,10 +6,12 @@ import { useSearchParams } from "react-router-dom";
 import VideoDetails from "../components/VideoDetails";
 import LiveChat from "../components/LiveChat";
 import CommentsCont from "../components/CommentsCont";
+import Loader from "../utils/Loader.jsx";
 
 function Watch() {
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get("v");
+  const categoryName = searchParams.get("category")
 
   const dispatch = useDispatch();
   const { video, channel, category, loading, error } = useSelector((state) => state.watch);
@@ -20,7 +22,8 @@ function Watch() {
     }
   }, [videoId, dispatch]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <div className="flex justify-center items-center"><Loader/></div>
+
   if (error) return <p className="text-red-500">{error}</p>;
   if (!video || !channel) return null;
 
@@ -38,9 +41,8 @@ function Watch() {
         ></iframe>
         <VideoDetails/>
       </div>
-      {category !== "live" ? <CommentsCont /> : <LiveChat />}
+      {categoryName === "live" ? <LiveChat /> : <CommentsCont /> }
     </div>
   );
 }
-
 export default Watch;

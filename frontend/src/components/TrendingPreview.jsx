@@ -29,7 +29,7 @@ const TrendingPreview = () => {
     return <ShimmerList />;
   }
 
-  const previewVideos = videos.slice(0, 8);
+  const previewVideos = videos.slice(0, 10);
 
   return (
     <section className="w-full px-6 py-12">

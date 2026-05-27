@@ -15,7 +15,6 @@ const store = configureStore({
     videos : videosReducer,
     search: searchReducer,
     watch : watchReducer
-
   },
 });
 

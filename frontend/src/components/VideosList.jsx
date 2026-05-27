@@ -17,7 +17,7 @@ const VideosList = ({ category }) => {
   }, [category, dispatch]);
 
   if (loading) return <ShimmerList />;
-  if (error) return <p className="text-red-500">{error}</p>;
+  if (error) return <p className="text-red-500 flex justify-center items-center font-semibold">{error}</p>;
 
   return (
     <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-3 p-2 overflow-y-scroll hide-scrollbar">
