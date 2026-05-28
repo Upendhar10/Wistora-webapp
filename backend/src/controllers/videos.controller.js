@@ -2,7 +2,8 @@ import axios from "axios";
 import { API_URL } from "../utils/constants.js";
 
 export const getVideos = async (req, res) => {
-  
+  console.log("Request started");
+
   try {
     const { category='trending' } = req.query;
 
@@ -29,6 +30,8 @@ export const getVideos = async (req, res) => {
     }
 
     console.log(API_URL, params);
+
+    console.log("Calling upstream API");
     
     const response = await axios.get(API_URL, {
         params,
@@ -37,6 +40,8 @@ export const getVideos = async (req, res) => {
     );
 
     // console.log(response);
+
+    console.log("Upstream responded");
 
     return res.json(response.data);
 

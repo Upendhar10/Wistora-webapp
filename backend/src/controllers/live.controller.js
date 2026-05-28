@@ -7,7 +7,7 @@ export const getLiveVideos = async (req, res) => {
 
     const response = await axios.get(url, {timeout:10000});
 
-    res.json(response.data);
+    return res.json(response.data);
   } catch (error) {
     console.error("Live fetch failed:", error.message);
     res.status(500).json({ error: "Failed to fetch live videos" });
