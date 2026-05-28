@@ -11,7 +11,7 @@ export const getSearchVideos = async (req, res) => {
 
     const search_api_url = `${Search_API_URL}&key=${process.env.YOUTUBE_API_KEY}&q=${q}`
 
-    const response = await axios.get(search_api_url);
+    const response = await axios.get(search_api_url, {timeout:10000});
     res.json(response.data);
 
   } catch (error) {

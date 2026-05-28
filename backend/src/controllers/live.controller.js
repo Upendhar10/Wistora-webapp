@@ -5,7 +5,7 @@ export const getLiveVideos = async (req, res) => {
   try {
     const url = `${YT_LIVE_API}&key=${process.env.YOUTUBE_API_KEY}`
 
-    const response = await axios.get(url);
+    const response = await axios.get(url, {timeout:10000});
 
     res.json(response.data);
   } catch (error) {
