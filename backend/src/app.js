@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import serverless from "serverless-http";
 
 dotenv.config();
 
@@ -36,6 +35,8 @@ app.use(cors({
 
 app.use(express.json());
 
+// const PORT = process.env.PORT || 5000;
+
 // endpoints
 app.use("/api/videos", videosRoute);
 app.use("/api/search", SearchRoute);
@@ -45,5 +46,9 @@ app.use("/api/watch", WatchPageRoute);
 app.get("/", (req, res) => {
   res.send("BFF is running 🚀");
 });
+
+// app.listen(PORT, () => {
+//   console.log(`Server running on port ${PORT}`);
+// });
 
 export default app;

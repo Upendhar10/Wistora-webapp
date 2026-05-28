@@ -4,7 +4,7 @@
   "description": "A BFF for wistora (frontend) app",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/app.js",
+    "dev": "nodemon src/server.js",
     "vercel:dev": "vercel dev",
     "test": "echo \"Error: no test specified\" && exit 1" 
   },

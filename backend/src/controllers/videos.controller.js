@@ -4,29 +4,54 @@ import { API_URL } from "../utils/constants.js";
 export const getVideos = async (req, res) => {
   
   try {
-    const { category } = req.query;
+    const { category='trending' } = req.query;
 
     const CATEGORY_IDS = {
-      trending: "",
+      trending: null,
       music: "10",
       gaming: "20",
       sports: "17",
     };
 
-    const categoryParam = CATEGORY_IDS[category]
-      ? `&videoCategoryId=${CATEGORY_IDS[category]}`
-      : "";
+    if (!(category in CATEGORY_IDS)) {
+      return res.status(400).json({
+          error:"Invalid category"
+      });
+    }
 
-    const url = `${API_URL}&key=${process.env.YOUTUBE_API_KEY}${categoryParam}`
+    const params = {
+      key:process.env.YOUTUBE_API_KEY
+    };
+
+    if(CATEGORY_IDS[category]){
+      params.videoCategoryId =
+      CATEGORY_IDS[category];
+    }
+
+    console.log(API_URL, params);
     
-    const response = await axios.get(url, {timeout: 10000});
+    const response = await axios.get(API_URL, {
+        params,
+        timeout:10000
+      }
+    );
 
     // console.log(response);
 
-    res.json(response.data);
+    return res.json(response.data);
 
   } catch (error) {
-    console.error("Video fetch failed:", error.message);
-    res.status(500).json({ error: "Failed to fetch videos" });
+    console.error({
+      message:error.message,
+      code:error.code,
+      status:error.response?.status,
+      data:error.response?.data
+    });
+    if(error.code==="ECONNABORTED"){
+      return res.status(504).json({
+         error:"YT request timeout"
+      });
+    }
+    res.status(500).json({ error: error.message });
   }
 };
