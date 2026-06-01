@@ -57,6 +57,6 @@ export const getVideos = async (req, res) => {
          error:"YT request timeout"
       });
     }
-    res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 };
