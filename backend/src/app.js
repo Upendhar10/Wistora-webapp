@@ -17,21 +17,23 @@ const allowedOrigins = [
   "https://wistora-webapp.vercel.app"
 ];
 
-app.use(cors({
-  origin(origin, callback){
+// app.use(cors({
+//   origin(origin, callback){
 
-    if (!origin) {
-      return callback(null, true);
-    }
+//     if (!origin) {
+//       return callback(null, true);
+//     }
 
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
+//     if (allowedOrigins.includes(origin)) {
+//       return callback(null, true);
+//     }
 
-    return callback(new Error("Not allowed by CORS"));
-  },
-  credentials:true
-}));
+//     return callback(new Error("Not allowed by CORS"));
+//   },
+//   credentials:true
+// }));
+
+app.use(cors());
 
 app.use(express.json());
 
