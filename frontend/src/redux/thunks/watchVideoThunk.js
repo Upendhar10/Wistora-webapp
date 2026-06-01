@@ -8,7 +8,7 @@ export const fetchWatchVideoData = createAsyncThunk(
   async (videoId, { rejectWithValue }) => {
     try {
       const res = await axios.get(
-        // `http://localhost:8000/api/watch?v=${videoId}`
+        // `http://localhost:3000/api/watch?v=${videoId}`
         `${BACKEND_BASE_URL}/api/watch?v=${videoId}`
       );
       // console.log(res.data);

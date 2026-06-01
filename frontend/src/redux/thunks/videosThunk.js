@@ -10,10 +10,10 @@ export const fetchVideos = createAsyncThunk(
       let url = "";
 
       if (category === "live") {
-        // url = "http://localhost:8000/api/live";
+        // url = "http://localhost:3000/api/live";
         url = `${BACKEND_BASE_URL}/api/live`
       } else {
-        // url = `http://localhost:8000/api/videos?category=${category}`;
+        // url = `http://localhost:3000/api/videos?category=${category}`;
         url = `${BACKEND_BASE_URL}/api/videos?category=${category}`;
       }
 

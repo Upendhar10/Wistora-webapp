@@ -8,7 +8,7 @@ export const searchVideos = createAsyncThunk(
   async (query, thunkAPI) => {
     try {
       const response = await fetch(
-        // `http://localhost:8000/api/search?q=${query}`
+        // `http://localhost:3000/api/search?q=${query}`
         `${BACKEND_BASE_URL}/api/search?q=${query}`
       );
 
